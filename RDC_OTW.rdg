@@ -1,0 +1,868 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RDCMan programVersion="2.7" schemaVersion="3">
+  <file>
+    <credentialsProfiles>
+      <credentialsProfile inherit="None">
+        <profileName scope="Local">TLR\ta-s-dthome</profileName>
+        <userName>TLR\ta-s-dthome</userName>
+        <password>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAqL1sYrFjMkW/FgS2Oj9IjAAAAAACAAAAAAADZgAAwAAAABAAAAC1m7PgTEjByRSa29E+c27eAAAAAASAAACgAAAAEAAAAN9w5WBNdee05UGWkMacDTgYAAAArpLxpcqcI++gem5AOufB6WczhW6aGzibFAAAAFiH2sY5LVQaGmNHbe8MyP01WzXg</password>
+        <domain>TLR</domain>
+      </credentialsProfile>
+      <credentialsProfile inherit="None">
+        <profileName scope="Local">PQRS\TaxBuilder</profileName>
+        <userName>TaxBuilder</userName>
+        <password>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAqL1sYrFjMkW/FgS2Oj9IjAAAAAACAAAAAAADZgAAwAAAABAAAACkEGzw3oTDMzjHENgI/seEAAAAAASAAACgAAAAEAAAAHheHrf9r8zWsDjeSeOYE/0YAAAAOQLhCOox7Bt8l+YQBQATy3ymyKS0utvcFAAAAPm5QXM0Z0/u2n9ILkSRwIQwGzas</password>
+        <domain>PQRS</domain>
+      </credentialsProfile>
+      <credentialsProfile inherit="None">
+        <profileName scope="Local">MGMT User</profileName>
+        <userName>m6043280</userName>
+        <password>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAqL1sYrFjMkW/FgS2Oj9IjAAAAAACAAAAAAADZgAAwAAAABAAAAAqggECoeqIWGkiDM1U+wEHAAAAAASAAACgAAAAEAAAAPMVPU9OVTj4ImyUGFgBEL4oAAAAkmD5OZ75V404Ork7E2/4AQw++b3Sk6H5PNo2Mp4TjS0jqKhqTL8HFhQAAAB8waTJ9RlnQUrjR/0N5N8rf4xQPw==</password>
+        <domain>mgmt</domain>
+      </credentialsProfile>
+    </credentialsProfiles>
+    <properties>
+      <expanded>True</expanded>
+      <name>TRTA</name>
+    </properties>
+    <logonCredentials inherit="None">
+      <profileName scope="File">MGMT User</profileName>
+    </logonCredentials>
+    <remoteDesktop inherit="None">
+      <sameSizeAsClientArea>True</sameSizeAsClientArea>
+      <fullScreen>False</fullScreen>
+      <colorDepth>24</colorDepth>
+    </remoteDesktop>
+    <group>
+      <properties>
+        <expanded>True</expanded>
+        <name>AppServers</name>
+      </properties>
+      <group>
+        <properties>
+          <expanded>False</expanded>
+          <name>DEV - OIT</name>
+        </properties>
+        <server>
+          <properties>
+            <displayName>10.202.96.131_Dev2_S19V</displayName>
+            <name>10.202.96.131</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.96.242</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <displayName>AppSvr_10.202.105.46</displayName>
+            <name>10.202.105.46</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <displayName>AppSvr_10.202.105.47</displayName>
+            <name>10.202.105.47</name>
+          </properties>
+        </server>
+      </group>
+      <group>
+        <properties>
+          <expanded>True</expanded>
+          <name>PD 2017</name>
+        </properties>
+        <server>
+          <properties>
+            <displayName>10.202.96.96_PD2_S19V</displayName>
+            <name>10.202.96.96</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.104.83</name>
+          </properties>
+        </server>
+      </group>
+      <group>
+        <properties>
+          <expanded>True</expanded>
+          <name>SI - GoSystem - 2016</name>
+        </properties>
+        <server>
+          <properties>
+            <name>10.202.97.115</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.97.117</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.97.119</name>
+          </properties>
+        </server>
+      </group>
+      <group>
+        <properties>
+          <expanded>True</expanded>
+          <name>SI - OIT</name>
+        </properties>
+        <server>
+          <properties>
+            <name>10.202.97.56</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.97.57</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.107.175</name>
+          </properties>
+        </server>
+      </group>
+      <group>
+        <properties>
+          <expanded>True</expanded>
+          <name>SI_TD1_2017</name>
+        </properties>
+        <server>
+          <properties>
+            <name>10.202.104.94</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <displayName>10.202.104.96_1040_offline</displayName>
+            <name>10.202.104.96</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.104.112</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <displayName>10.202.104.123_1120_offline</displayName>
+            <name>10.202.104.123</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.104.138</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <displayName>10.202.104.148_1065_offline</displayName>
+            <name>10.202.104.148</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.104.150</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.104.182</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <displayName>10.202.106.215_Rest_TaxApps_Offline</displayName>
+            <name>10.202.106.215</name>
+          </properties>
+        </server>
+      </group>
+    </group>
+    <group>
+      <properties>
+        <expanded>True</expanded>
+        <name>DEV</name>
+      </properties>
+      <server>
+        <properties>
+          <displayName>OTW_Dev_Site_1 (10.202.97.46)</displayName>
+          <name>10.202.97.46</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <displayName>OTW_Dev_Site_2 (10.202.97.47)</displayName>
+          <name>10.202.97.47</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <displayName>OTW_Dev_Svc_1 (10.202.97.48)</displayName>
+          <name>10.202.97.48</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <displayName>OTW_Dev_Svc_2 (10.202.97.49)</displayName>
+          <name>10.202.97.49</name>
+        </properties>
+      </server>
+    </group>
+    <group>
+      <properties>
+        <expanded>True</expanded>
+        <name>JMeter VMs</name>
+      </properties>
+      <logonCredentials inherit="None">
+        <profileName scope="File">MGMT User</profileName>
+      </logonCredentials>
+      <server>
+        <properties>
+          <name>10.202.112.215</name>
+        </properties>
+        <logonCredentials inherit="None">
+          <profileName scope="File">TLR\ta-s-dthome</profileName>
+        </logonCredentials>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.116.91</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.117.155</name>
+        </properties>
+        <logonCredentials inherit="None">
+          <profileName scope="File">TLR\ta-s-dthome</profileName>
+        </logonCredentials>
+      </server>
+      <server>
+        <properties>
+          <displayName>10.202.117.175_Master</displayName>
+          <name>10.202.117.175</name>
+        </properties>
+        <logonCredentials inherit="None">
+          <profileName scope="File">TLR\ta-s-dthome</profileName>
+        </logonCredentials>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.118.107</name>
+        </properties>
+        <logonCredentials inherit="None">
+          <profileName scope="File">TLR\ta-s-dthome</profileName>
+        </logonCredentials>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.119.41</name>
+        </properties>
+        <logonCredentials inherit="None">
+          <profileName scope="File">TLR\ta-s-dthome</profileName>
+        </logonCredentials>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.119.77</name>
+        </properties>
+        <logonCredentials inherit="None">
+          <profileName scope="File">TLR\ta-s-dthome</profileName>
+        </logonCredentials>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.119.109</name>
+        </properties>
+        <logonCredentials inherit="None">
+          <profileName scope="File">TLR\ta-s-dthome</profileName>
+        </logonCredentials>
+      </server>
+      <server>
+        <properties>
+          <displayName>10.202.119.225 Win10</displayName>
+          <name>10.202.119.225</name>
+        </properties>
+      </server>
+    </group>
+    <group>
+      <properties>
+        <expanded>False</expanded>
+        <name>JSlaves</name>
+      </properties>
+      <logonCredentials inherit="None">
+        <profileName scope="File">TLR\ta-s-dthome</profileName>
+      </logonCredentials>
+      <server>
+        <properties>
+          <name>10.202.116.130</name>
+        </properties>
+        <logonCredentials inherit="None">
+          <profileName scope="File">TLR\ta-s-dthome</profileName>
+        </logonCredentials>
+      </server>
+      <server>
+        <properties>
+          <name>cr-cislave-01.tlr.thomson.com</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <name>cr-cislave-02.tlr.thomson.com</name>
+        </properties>
+        <logonCredentials inherit="None">
+          <profileName scope="File">TLR\ta-s-dthome</profileName>
+        </logonCredentials>
+      </server>
+      <server>
+        <properties>
+          <name>cr-cislave-03.tlr.thomson.com</name>
+        </properties>
+        <logonCredentials inherit="None">
+          <profileName scope="File">TLR\ta-s-dthome</profileName>
+        </logonCredentials>
+      </server>
+      <server>
+        <properties>
+          <name>CR-SAUCESL-V01.TLR.Thomson.com</name>
+        </properties>
+        <displaySettings inherit="None">
+          <thumbnailScale>1</thumbnailScale>
+          <smartSizeDockedWindows>False</smartSizeDockedWindows>
+          <smartSizeUndockedWindows>False</smartSizeUndockedWindows>
+        </displaySettings>
+      </server>
+      <server>
+        <properties>
+          <displayName>Selenium Grid VM-1</displayName>
+          <name>10.202.116.130</name>
+        </properties>
+        <logonCredentials inherit="None">
+          <profileName scope="File">TLR\ta-s-dthome</profileName>
+        </logonCredentials>
+      </server>
+      <server>
+        <properties>
+          <displayName>Selenium Grid VM-2</displayName>
+          <name>10.202.118.6</name>
+        </properties>
+        <logonCredentials inherit="None">
+          <profileName scope="File">TLR\ta-s-dthome</profileName>
+        </logonCredentials>
+      </server>
+    </group>
+    <group>
+      <properties>
+        <expanded>True</expanded>
+        <name>MastApps</name>
+      </properties>
+      <server>
+        <properties>
+          <name>CDEVRS12FSVR01.riaqa.loc</name>
+        </properties>
+      </server>
+    </group>
+    <group>
+      <properties>
+        <expanded>False</expanded>
+        <name>PD</name>
+      </properties>
+      <server>
+        <properties>
+          <displayName>10.202.104.72_1120_AppServer</displayName>
+          <name>10.202.104.72</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.104.199</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.105.137</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <displayName>10.202.106.16_OIT_AppSvr</displayName>
+          <name>10.202.106.16</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <displayName>10.202.107.57_1065_AppSvr</displayName>
+          <name>10.202.107.57</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <name>C111PD8LAFISQL1.riaqa.loc</name>
+        </properties>
+        <logonCredentials inherit="None">
+          <profileName scope="File">MGMT User</profileName>
+        </logonCredentials>
+      </server>
+      <server>
+        <properties>
+          <displayName>OTW_PD_Site_1 (10.202.107.94)</displayName>
+          <name>10.202.107.94</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <displayName>OTW_PD_Site_2 (10.202.107.93)</displayName>
+          <name>10.202.107.93</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <displayName>OTW_PD_Svc_1 (10.202.107.92)</displayName>
+          <name>10.202.107.92</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <displayName>OTW_PD_Svc_2 (10.202.107.90)</displayName>
+          <name>10.202.107.90</name>
+        </properties>
+      </server>
+    </group>
+    <group>
+      <properties>
+        <expanded>False</expanded>
+        <name>PDF Servers</name>
+      </properties>
+      <group>
+        <properties>
+          <expanded>True</expanded>
+          <name>DEV1</name>
+        </properties>
+        <logonCredentials inherit="None">
+          <profileName scope="File">MGMT User</profileName>
+        </logonCredentials>
+        <server>
+          <properties>
+            <name>10.202.97.214</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.97.215</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.98.162</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.98.163</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.98.164</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.98.165</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.98.166</name>
+          </properties>
+        </server>
+      </group>
+      <group>
+        <properties>
+          <expanded>True</expanded>
+          <name>PD</name>
+        </properties>
+        <server>
+          <properties>
+            <name>10.202.96.26</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.96.32</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.96.48</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.97.213</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.102.195</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.104.199</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.105.248</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.107.170</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.107.249</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>PDWEBPRINTSVC1</name>
+          </properties>
+        </server>
+      </group>
+      <group>
+        <properties>
+          <expanded>True</expanded>
+          <name>SB</name>
+        </properties>
+        <connectionSettings inherit="None">
+          <connectToConsole>False</connectToConsole>
+          <startProgram />
+          <workingDir />
+          <port>5616</port>
+          <loadBalanceInfo />
+        </connectionSettings>
+        <server>
+          <properties>
+            <name>10.206.159.44</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.206.159.62</name>
+          </properties>
+        </server>
+      </group>
+      <group>
+        <properties>
+          <expanded>True</expanded>
+          <name>SI GRS</name>
+        </properties>
+        <server>
+          <properties>
+            <name>10.202.96.237</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.104.43</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.105.85</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.107.225</name>
+          </properties>
+        </server>
+      </group>
+      <group>
+        <properties>
+          <expanded>True</expanded>
+          <name>SI TD1</name>
+        </properties>
+        <server>
+          <properties>
+            <name>10.202.104.16</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.106.179</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.106.180</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <name>10.202.106.198</name>
+          </properties>
+        </server>
+      </group>
+    </group>
+    <group>
+      <properties>
+        <expanded>True</expanded>
+        <name>Performance</name>
+      </properties>
+      <server>
+        <properties>
+          <name>10.202.97.224</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.97.225</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.97.226</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.97.227</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.97.228</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.97.229</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.97.230</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.97.231</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.97.232</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <displayName>sioitapp01_10.202.97.223</displayName>
+          <name>10.202.97.223</name>
+        </properties>
+      </server>
+    </group>
+    <group>
+      <properties>
+        <expanded>False</expanded>
+        <name>SI-TD1</name>
+      </properties>
+      <server>
+        <properties>
+          <name>10.202.97.229</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <displayName>10.202.106.198_PDF Server</displayName>
+          <name>10.202.106.198</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <displayName>ctd1otwsvc1_10.202.107.138</displayName>
+          <name>ctd1otwsvc1.riaqa.loc</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <displayName>ctd1otwsvc2_10.202.107.139</displayName>
+          <name>ctd1otwsvc2.riaqa.loc</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <displayName>siotwwebsvc01_10.202.97.221</displayName>
+          <name>siotwwebsvc01.riaqa.loc</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <displayName>siotwwebsvc02_10.202.97.222</displayName>
+          <name>siotwwebsvc02.riaqa.loc</name>
+        </properties>
+      </server>
+    </group>
+    <group>
+      <properties>
+        <expanded>False</expanded>
+        <name>SQL Server</name>
+      </properties>
+      <server>
+        <properties>
+          <name>C111SI8LAFISQL1.riaqa.loc</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <name>cr-otwdb-01.riaqa.loc</name>
+        </properties>
+      </server>
+    </group>
+    <group>
+      <properties>
+        <expanded>False</expanded>
+        <name>UI VMs</name>
+      </properties>
+      <logonCredentials inherit="None">
+        <profileName scope="File">TLR\ta-s-dthome</profileName>
+      </logonCredentials>
+      <server>
+        <properties>
+          <name>10.202.116.12</name>
+        </properties>
+        <logonCredentials inherit="None">
+          <profileName scope="File">TLR\ta-s-dthome</profileName>
+        </logonCredentials>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.116.130</name>
+        </properties>
+        <logonCredentials inherit="None">
+          <profileName scope="File">TLR\ta-s-dthome</profileName>
+        </logonCredentials>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.117.155</name>
+        </properties>
+        <logonCredentials inherit="None">
+          <profileName scope="File">TLR\ta-s-dthome</profileName>
+        </logonCredentials>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.117.175</name>
+        </properties>
+        <logonCredentials inherit="None">
+          <profileName scope="File">TLR\ta-s-dthome</profileName>
+        </logonCredentials>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.118.107</name>
+        </properties>
+        <logonCredentials inherit="None">
+          <profileName scope="File">TLR\ta-s-dthome</profileName>
+        </logonCredentials>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.119.77</name>
+        </properties>
+        <logonCredentials inherit="None">
+          <profileName scope="File">TLR\ta-s-dthome</profileName>
+        </logonCredentials>
+      </server>
+    </group>
+    <group>
+      <properties>
+        <expanded>False</expanded>
+        <name>Undercover</name>
+      </properties>
+      <server>
+        <properties>
+          <displayName>c246kregrsoit.clrrs.loc</displayName>
+          <name>c246kregrsoit.clrrs.loc:5616</name>
+        </properties>
+      </server>
+    </group>
+    <group>
+      <properties>
+        <expanded>False</expanded>
+        <name>Web Print</name>
+      </properties>
+      <server>
+        <properties>
+          <name>10.202.96.237</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.97.240</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.97.241</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.97.245</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.97.253</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.98.0</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <name>10.202.98.8</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <name>cr-ottappsi-v10.riaqa.loc</name>
+        </properties>
+      </server>
+      <server>
+        <properties>
+          <displayName>PDF Blade 10.202.107.148</displayName>
+          <name>10.202.107.148</name>
+        </properties>
+      </server>
+    </group>
+  </file>
+  <connected />
+  <favorites>
+    <server>TRTA\PDF Servers\DEV1\10.202.98.162</server>
+    <server>TRTA\JSlaves\cr-cislave-01.tlr.thomson.com</server>
+    <server>TRTA\JSlaves\cr-cislave-02.tlr.thomson.com</server>
+    <server>TRTA\JSlaves\cr-cislave-03.tlr.thomson.com</server>
+    <server>TRTA\DEV\OTW_Dev_Site_1 (10.202.97.46)</server>
+    <server>TRTA\DEV\OTW_Dev_Site_2 (10.202.97.47)</server>
+    <server>TRTA\DEV\OTW_Dev_Svc_1 (10.202.97.48)</server>
+    <server>TRTA\DEV\OTW_Dev_Svc_2 (10.202.97.49)</server>
+    <server>TRTA\PD\OTW_PD_Site_1 (10.202.107.94)</server>
+    <server>TRTA\PD\OTW_PD_Site_2 (10.202.107.93)</server>
+    <server>TRTA\PD\OTW_PD_Svc_1 (10.202.107.92)</server>
+    <server>TRTA\PD\OTW_PD_Svc_2 (10.202.107.90)</server>
+  </favorites>
+  <recentlyUsed />
+</RDCMan>
