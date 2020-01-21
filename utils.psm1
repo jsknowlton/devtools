@@ -280,11 +280,11 @@ New-Alias whence whereis
 #     return "$((Get-Command $args[0] -ErrorAction SilentlyContinue).Definition)"
 # }
 
-function msbuild {
-    $cmd = Get-ChildItem -path 'C:\Program Files (x86)\Microsoft Visual Studio' -Recurse msbuild.exe | Sort-Object $_.FullName -Descending | Select-Object -First 1 | %{$_.FullName}
-    # $cmd = "C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\15.0\Bin\MSBuild.exe"
-    & $cmd $args
-}
+# function msbuild {
+#     $cmd = Get-ChildItem -path 'C:\Program Files (x86)\Microsoft Visual Studio' -Recurse msbuild.exe | Sort-Object $_.FullName -Descending | Select-Object -First 1 | %{$_.FullName}
+#     # $cmd = "C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\15.0\Bin\MSBuild.exe"
+#     & $cmd $args
+# }
 
 function Start-NotepadPlusPlus {
     if (Test-Path "C:\Program Files (x86)\Notepad++\notepad++.exe") {

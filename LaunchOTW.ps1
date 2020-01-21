@@ -1,8 +1,8 @@
 #
 # LaunchOTW.ps1
 #
-$appServer = '10.114.4.69'
-$sessionId = '901024'
+$appServer = '10.114.4.139'
+$sessionId = '899863'
 $nameSpace = 'GRS'
 $taxYear = '2018'
 
