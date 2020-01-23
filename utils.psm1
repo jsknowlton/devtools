@@ -79,6 +79,20 @@ function rebootDev () {
     @("10.202.97.46", "10.202.97.47", "10.202.97.48", "10.202.97.49")| % {Start-Process shutdown -ArgumentList "/r /m \\$_"}
 }
 
+function Update-TrBams () {
+    param (
+        [string]$Search = ""
+    )
+
+    $searchTerm = "*.nupkg"
+
+    if ($Search -ne "") {
+        $searchTerm = "*$Search*.nupkg"
+    }
+
+    Get-ChildItem -Recurse $($searchTerm) | Sort-Object Name | ForEach-Object {nuget push $_.FullName}
+}
+
 function Update-NugetLocal () {
     param (
         [string]$Search = ""
