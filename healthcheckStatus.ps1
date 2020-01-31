@@ -1,6 +1,6 @@
 param (
     [ValidateSet("dev", "pq", "si", "sitd1", "pd", "sat", "sb", "prod")][string]$env = "prod",
-    [ValidateSet("site", "svc", "pdfsvc", "all")][string]$serverType = "pdfsvc",
+    [ValidateSet("site", "svc", "pdfsvc", "valsvc", "all")][string]$serverType = "pdfsvc",
     [switch]$omitGood,
     [string]$omitVersion,
     [switch]$timeoutOnly,
@@ -11,7 +11,7 @@ param (
 
 $serverTypeList = @()
 if ($serverType -eq "all") {
-    $serverTypeList = @("site", "svc", "pdfsvc")
+    $serverTypeList = @("site", "svc", "valsvc", "pdfsvc")
     if ($outputIpAddresses) {
         throw "ServerType cannot be 'all' when requesting IP Address output"
     }
@@ -20,15 +20,15 @@ else {
     $serverTypeList += $serverType
 }
 
-$serverConfig = @{}
-$serverConfig["dev"] = @{}
-$serverConfig["pq"] = @{}
-$serverConfig["si"] = @{}
-$serverConfig["sitd1"] = @{}
-$serverConfig["pd"] = @{}
-$serverConfig["sat"] = @{}
-$serverConfig["sb"] = @{}
-$serverConfig["prod"] = @{}
+$serverConfig = @{ }
+$serverConfig["dev"] = @{ }
+$serverConfig["pq"] = @{ }
+$serverConfig["si"] = @{ }
+$serverConfig["sitd1"] = @{ }
+$serverConfig["pd"] = @{ }
+$serverConfig["sat"] = @{ }
+$serverConfig["sb"] = @{ }
+$serverConfig["prod"] = @{ }
 
 $serverConfig["dev"]["site"] = @(
     "oitotwdev1.riaqa.loc",
@@ -806,7 +806,13 @@ foreach ($serverTypeListItem in $serverTypeList) {
         Write-Host "$env $serverTypeListItem"
     }
 
-    [array]$servers = $serverConfig[$env][$serverTypeListItem]
+    [array]$servers = @()
+    if ($serverTypeListItem -eq "valsvc") {
+        $servers = $serverConfig[$env]["svc"]
+    }
+    else {
+        $servers = $serverConfig[$env][$serverTypeListItem]
+    }
 
     $colorList = [System.Collections.Generic.List[System.ConsoleColor]]@(
         [System.ConsoleColor]::Blue,
@@ -815,7 +821,7 @@ foreach ($serverTypeListItem in $serverTypeList) {
         [System.ConsoleColor]::Yellow,
         [System.ConsoleColor]::White)
 
-    $versionColors = @{}
+    $versionColors = @{ }
     $serverNumber = 0
 
     $serverIpAddresses = [System.Collections.Generic.List[string]]@()
@@ -842,18 +848,36 @@ foreach ($serverTypeListItem in $serverTypeList) {
             $statusInfo = ""
             $Start = 0
             $End = 0
-            $versionInfo = (Invoke-WebRequest -Uri "http://$($ipaddress):$($port)/healthcheck/version" -TimeoutSec $timeoutSecs).Content.replace("`r`n", "")
-            $Start = Get-Date
-            $statusInfo = (Invoke-WebRequest -Uri "http://$($ipaddress):$($port)/healthcheck/status" -TimeoutSec $timeoutSecs).Content.replace("`r`n", "")
-            $End = Get-Date
-            $TimeTaken = ($End - $Start).TotalMilliseconds 
-            $healthStatus = "pass"
-            $statusColor = [System.ConsoleColor]::Green
+            if ($serverTypeListItem -eq "valsvc") {
+                # http://10.202.99.99:9100/healthcheck/validationservice/version
+                $versionInfo = (Invoke-WebRequest -Uri "http://$($ipaddress):$($port)/healthcheck/validationservice/version" -TimeoutSec $timeoutSecs).Content.replace("`r`n", "")
+                $Start = Get-Date
+                $statusInfo = (Invoke-WebRequest -Uri "http://$($ipaddress):$($port)/healthcheck/validationservice" -TimeoutSec $timeoutSecs).Content.replace("`r`n", "").ToUpper()
+                $End = Get-Date
+                $TimeTaken = ($End - $Start).TotalMilliseconds 
+                $healthStatus = "pass"
+                $statusColor = [System.ConsoleColor]::Green
 
-            if ($statusInfo -ne "1") {
-                $healthStatus = "fail"
-                $statusColor = [System.ConsoleColor]::Red
+                if ($statusInfo -ne "HEALTHY") {
+                    $healthStatus = "fail"
+                    $statusColor = [System.ConsoleColor]::Red
+                }
             }
+            else {
+                $versionInfo = (Invoke-WebRequest -Uri "http://$($ipaddress):$($port)/healthcheck/version" -TimeoutSec $timeoutSecs).Content.replace("`r`n", "")
+                $Start = Get-Date
+                $statusInfo = (Invoke-WebRequest -Uri "http://$($ipaddress):$($port)/healthcheck/status" -TimeoutSec $timeoutSecs).Content.replace("`r`n", "")
+                $End = Get-Date
+                $TimeTaken = ($End - $Start).TotalMilliseconds 
+                $healthStatus = "pass"
+                $statusColor = [System.ConsoleColor]::Green
+    
+                if ($statusInfo -ne "1") {
+                    $healthStatus = "fail"
+                    $statusColor = [System.ConsoleColor]::Red
+                }
+            }
+        
         }
         catch {
             $healthStatus = "exception"

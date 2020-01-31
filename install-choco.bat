@@ -8,16 +8,16 @@ choco feature enable -n=allowGlobalConfirmation
 choco feature enable -n=failOnAutoUninstaller
 choco feature enable -n=useRememberedArgumentsForUpgrades
 REM choco install sysinternals
-choco install notepadplusplus --x86
-choco install vscode
-choco install conemu
-choco install nuget.commandline
+REM choco install notepadplusplus --x86
+REM choco install vscode
+REM choco install conemu
+REM choco install nuget.commandline
 REM choco install sqlserver-cmdlineutils --version=14.0
 REM choco install mssqlserver2014-sqllocaldb
 REM choco install sql-server-management-studio
-choco install powershell
-powershell.exe -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "Install-PackageProvider -Name NuGet -Force"
-powershell.exe -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "Set-PSRepository -Name PSGallery -InstallationPolicy Trusted"
+REM choco install powershell
+REM powershell.exe -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "Install-PackageProvider -Name NuGet -Force"
+REM powershell.exe -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "Set-PSRepository -Name PSGallery -InstallationPolicy Trusted"
 REM Install psPAS in order to use get-vault-cred.ps1 script
 REM Install-Module -Name psPAS
 

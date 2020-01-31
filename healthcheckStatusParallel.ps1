@@ -1,6 +1,6 @@
 param (
     [ValidateSet("dev", "pq", "si", "sitd1", "pd", "sat", "sb", "prod")][string]$env = "prod",
-    [ValidateSet("site", "svc", "pdfsvc")][string]$serverType = "pdfsvc",
+    [ValidateSet("site", "svc", "pdfsvc", "valsvc")][string]$serverType = "pdfsvc",
     [switch]$omitGood,
     [string]$omitVersion
 )
@@ -8,13 +8,6 @@ param (
 # Import-Module PSWriteColor
 Import-Module .\Write-PSObject.ps1 -Force
 
-# $serverTypeList = @()
-# if ($serverType -eq "all") {
-#     $serverTypeList = @("site", "svc", "pdfsvc")
-# }
-# else {
-#     $serverTypeList += $serverType
-# }
 
 $serverConfig = @{ }
 $serverConfig["dev"] = @{ }
@@ -87,7 +80,17 @@ $serverConfig["sitd1"]["site"] = @(
 
 $serverConfig["sitd1"]["svc"] = @(
     "ctd1otwsvc1.riaqa.loc:9100",
-    "ctd1otwsvc2.riaqa.loc:9100"
+    "ctd1otwsvc2.riaqa.loc:9100",
+    "sitd1otw01.riaqa.loc:9100",
+    "sitd1otw02.riaqa.loc:9100",
+    "sitd1otw03.riaqa.loc:9100",
+    "sitd1otw04.riaqa.loc:9100",
+    "sitd1otw05.riaqa.loc:9100",
+    "sitd1otw06.riaqa.loc:9100",
+    "sitd1otw07.riaqa.loc:9100",
+    "sitd1otw08.riaqa.loc:9100",
+    "sitd1otw09.riaqa.loc:9100",
+    "sitd1otw10.riaqa.loc:9100"
 )
 
 $serverConfig["sitd1"]["pdfsvc"] = @(
@@ -698,7 +701,13 @@ $serverConfig["prod"]["pdfsvc"] = @(
 $timeoutSecs = 5
 . .\Invoke-Parallel.ps1
 
-[array]$servers = $serverConfig[$env][$serverType]
+[array]$servers = @()
+if ($serverType -eq "valsvc") {
+    $servers = $serverConfig[$env]["svc"]
+}
+else {
+    $servers = $serverConfig[$env][$serverType]
+}
 
 $TotalStart = Get-Date
 $results = invoke-parallel -InputObject $servers -throttle 20 -runspaceTimeout 30 -Parameter $serverType -ImportVariables -ImportModules -Quiet -ScriptBlock {
@@ -724,18 +733,34 @@ $results = invoke-parallel -InputObject $servers -throttle 20 -runspaceTimeout 3
         if ($serverParts.Length -gt 1) {
             $port = $serverParts[1]
         }
-    
-        $versionInfo = (Invoke-WebRequest -Uri "http://$($ipaddress):$($port)/healthcheck/version" -TimeoutSec $timeoutSecs).Content.replace("`r`n", "")
-        $Start = Get-Date
-        $statusInfo = (Invoke-WebRequest -Uri "http://$($ipaddress):$($port)/healthcheck/status" -TimeoutSec $timeoutSecs).Content.replace("`r`n", "")
-        $End = Get-Date
-        $TimeTaken = ($End - $Start).TotalMilliseconds 
+
         $healthStatus = "pass"
         $statusColor = "Green"
 
-        if ($statusInfo -ne "1") {
-            $healthStatus = "fail"
-            $statusColor = "Red"
+        if ($serverType -eq "valsvc") {
+            # http://10.202.99.99:9100/healthcheck/validationservice/version
+            $versionInfo = (Invoke-WebRequest -Uri "http://$($ipaddress):$($port)/healthcheck/validationservice/version" -TimeoutSec $timeoutSecs).Content.replace("`r`n", "")
+            $Start = Get-Date
+            $statusInfo = (Invoke-WebRequest -Uri "http://$($ipaddress):$($port)/healthcheck/validationservice" -TimeoutSec $timeoutSecs).Content.replace("`r`n", "").ToUpper()
+            $End = Get-Date
+            $TimeTaken = ($End - $Start).TotalMilliseconds 
+
+            if ($statusInfo -ne "HEALTHY") {
+                $healthStatus = "fail"
+                $statusColor = "Red"
+            }
+        }
+        else {
+            $versionInfo = (Invoke-WebRequest -Uri "http://$($ipaddress):$($port)/healthcheck/version" -TimeoutSec $timeoutSecs).Content.replace("`r`n", "")
+            $Start = Get-Date
+            $statusInfo = (Invoke-WebRequest -Uri "http://$($ipaddress):$($port)/healthcheck/status" -TimeoutSec $timeoutSecs).Content.replace("`r`n", "")
+            $End = Get-Date
+            $TimeTaken = ($End - $Start).TotalMilliseconds 
+
+            if ($statusInfo -ne "1") {
+                $healthStatus = "fail"
+                $statusColor = "Red"
+            }
         }
     }
     catch {
@@ -787,7 +812,7 @@ $results = invoke-parallel -InputObject $servers -throttle 20 -runspaceTimeout 3
         IpAddress    = $ipaddress;
         Version      = $versionInfo;
         HealthStatus = $healthStatus;
-        ResponseTime  = "";
+        ResponseTime = "";
         OnlineStatus = ""
     }
 
@@ -820,13 +845,14 @@ $TotalTimeTaken = ($TotalEnd - $TotalStart)
 Write-Output "$env $serverType"
 $global:healthcheckResults = $results | Sort-Object -Property ServerName
 # $global:healthcheckResults = $results | Sort-Object -Property ServerName | Select-Object -Property ServerName, IpAddress, Version, HealthStatus, ResponseTime
-Write-PSObject -Object $global:healthcheckResults -MatchMethod Exact,Query,Query,Query,Exact,Exact,Exact -Column "HealthStatus","ResponseTime","ResponseTime","ResponseTime","OnlineStatus","OnlineStatus","HealthStatus" -Value "pass","'ResponseTime' -GT 0 -And 'ResponseTime' -LT 1000","'ResponseTime' -GE 1000 -And 'ResponseTime' -LT 5000","'ResponseTime' -GE 5000","online","offline","exception" -ValueForeColor "green","green","yellow","red","green","red","red"
+Write-PSObject -Object $global:healthcheckResults -MatchMethod Exact, Query, Query, Query, Exact, Exact, Exact -Column "HealthStatus", "ResponseTime", "ResponseTime", "ResponseTime", "OnlineStatus", "OnlineStatus", "HealthStatus" -Value "pass", "'ResponseTime' -GT 0 -And 'ResponseTime' -LT 1000", "'ResponseTime' -GE 1000 -And 'ResponseTime' -LT 5000", "'ResponseTime' -GE 5000", "online", "offline", "exception" -ValueForeColor "green", "green", "yellow", "red", "green", "red", "red"
 # Write-Output $Global:healthcheckResults | Format-Table | Tee-Object -FilePath .\healthcheckStatusParallel.txt
 
 Write-Output "Number of servers = $($global:healthcheckResults.Length)"
 Write-Output "Total Elapsed = $($TotalTimeTaken)"
 if ($omitVersion) {
     $percentComplete = (($servers.Length - $global:healthcheckResults.Length) / $servers.Length) * 100
-    Write-Output "Percent Complete = $($percentComplete)"
+    Write-Output "$($global:healthcheckResults.Length) of $($servers.Length) remaining"
+    Write-Output "$($percentComplete)% complete"
 }
 
