@@ -137,8 +137,10 @@ function mcd ([string]$Path) {
     if (-not $Path) {
         return;
     }
-    mkdir $Path
-    Set-Location $Path
+    mkdir $Path -ErrorAction SilentlyContinue
+    if (Test-Path $Path) {
+        Set-Location $Path
+    }
 }
 
 function vmdir {
