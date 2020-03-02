@@ -191,7 +191,6 @@ function Start-VS2017 {
     # $sln = $(dir *.sln | select -First 1 | % {$_.FullName})
     & $devenv $sln
 }
-New-Alias vs Start-VS2017
 New-Alias vs17 Start-VS2017
 
 function Start-VS2019 {
@@ -200,6 +199,7 @@ function Start-VS2019 {
     & $devenv $sln
 }
 New-Alias vs19 Start-VS2019
+New-Alias vs Start-VS2019
 
 function Clean {
     Get-ChildItem -Recurse -include 'bin', 'obj', 'publish'|
@@ -224,7 +224,7 @@ function Build {
     }
 
     $sln = Get-SolutionFile
-    $msbuildPath = Get-ChildItem -path 'C:\Program Files (x86)\Microsoft Visual Studio' -Recurse msbuild.exe | Sort-Object $_.FullName -Descending | Select-Object -First 1 | %{$_.DirectoryName}
+    $msbuildPath = dir -path 'C:\Program Files (x86)\Microsoft Visual Studio' -Recurse msbuild.exe | ?{-not $_.FullName.Contains("amd64")} | Sort-Object $_.FullName -Descending | Select-Object -First 1 | %{$_.DirectoryName}
 
 
     if ($null -eq (Get-Command "MSBuild.exe" -ErrorAction SilentlyContinue)) { 
