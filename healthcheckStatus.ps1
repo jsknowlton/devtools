@@ -1,5 +1,5 @@
 param (
-    [ValidateSet("dev", "pq", "si", "sitd1", "pd", "sat", "sb", "prod")][string]$env = "prod",
+    [ValidateSet("awslab", "dev", "pq", "si", "sitd1", "pd", "sat", "sb", "prod")][string]$env = "prod",
     [ValidateSet("site", "svc", "pdfsvc", "valsvc", "all")][string]$serverType = "pdfsvc",
     [switch]$omitGood,
     [string]$omitVersion,
@@ -21,6 +21,7 @@ else {
 }
 
 $serverConfig = @{ }
+$serverConfig["awslab"] = @{ }
 $serverConfig["dev"] = @{ }
 $serverConfig["pq"] = @{ }
 $serverConfig["si"] = @{ }
@@ -29,6 +30,26 @@ $serverConfig["pd"] = @{ }
 $serverConfig["sat"] = @{ }
 $serverConfig["sb"] = @{ }
 $serverConfig["prod"] = @{ }
+
+$serverConfig["awslab"]["site"] = @(
+    "10.21.15.131",
+    "10.21.6.185"
+)
+
+$serverConfig["awslab"]["svc"] = @(
+    "10.21.1.196:9100",
+    "10.21.11.16:9100"
+)
+
+$serverConfig["awslab"]["pdfsvc"] = @(
+    "10.21.6.55:9004",
+    "10.21.0.143:9004",
+    "10.21.2.153:9004",
+    "10.21.13.181:9004",
+    "10.21.14.253:9004",
+    "10.21.10.224:9004",
+    "10.21.14.177:9004"
+)
 
 $serverConfig["dev"]["site"] = @(
     "oitotwdev1.riaqa.loc",
@@ -831,7 +852,13 @@ foreach ($serverTypeListItem in $serverTypeList) {
         $statusColor = [System.ConsoleColor]::Yellow
         $serverName = $server.Split(".")[0]
         [array]$serverParts = $server.Split(":")
-        $ipaddress = ([System.Net.Dns]::GetHostAddresses($serverParts[0])).IPAddressToString
+        if ($env.ToLower().StartsWith("aws")) {
+            $ipaddress = $server
+            $serverName = $serverParts[0]
+        }else{
+            $ipaddress = ([System.Net.Dns]::GetHostAddresses($serverParts[0])).IPAddressToString
+        }
+
         if ($outputIpAddresses) {
             $serverIpAddresses.Add($ipaddress)
             continue
