@@ -1,5 +1,5 @@
 param (
-    [ValidateSet("awslab", "dev", "pq", "si", "sitd1", "pd", "sat", "sb", "prod")][string]$env = "prod",
+    [ValidateSet("awsdev", "awslab", "awspd", "dev", "pq", "si", "sitd1", "pd", "sat", "sb", "prod")][string]$env = "prod",
     [ValidateSet("site", "svc", "pdfsvc", "valsvc", "all")][string]$serverType = "pdfsvc",
     [switch]$omitGood,
     [string]$omitVersion,
@@ -21,7 +21,9 @@ else {
 }
 
 $serverConfig = @{ }
+$serverConfig["awsdev"] = @{ }
 $serverConfig["awslab"] = @{ }
+$serverConfig["awspd"] = @{ }
 $serverConfig["dev"] = @{ }
 $serverConfig["pq"] = @{ }
 $serverConfig["si"] = @{ }
@@ -30,6 +32,26 @@ $serverConfig["pd"] = @{ }
 $serverConfig["sat"] = @{ }
 $serverConfig["sb"] = @{ }
 $serverConfig["prod"] = @{ }
+
+$serverConfig["awsdev"]["site"] = @(
+    "10.21.1.178",
+    "10.21.13.203"
+)
+
+$serverConfig["awsdev"]["svc"] = @(
+    "10.21.6.67:9100",
+    "10.21.14.9:9100"
+)
+
+$serverConfig["awsdev"]["pdfsvc"] = @(
+    "10.21.0.220:9004",
+    "10.21.2.226:9004",
+    "10.21.5.250:9004",
+    "10.21.8.133:9004",
+    "10.21.9.230:9004",
+    "10.21.15.81:9004",
+    "10.21.14.42:9004"
+)
 
 $serverConfig["awslab"]["site"] = @(
     "10.21.15.131",
@@ -49,6 +71,26 @@ $serverConfig["awslab"]["pdfsvc"] = @(
     "10.21.14.253:9004",
     "10.21.10.224:9004",
     "10.21.14.177:9004"
+)
+
+$serverConfig["awspd"]["site"] = @(
+    "10.21.0.163",
+    "10.21.9.25"
+)
+
+$serverConfig["awspd"]["svc"] = @(
+    "10.21.6.89:9100",
+    "10.21.14.201:9100"
+)
+
+$serverConfig["awspd"]["pdfsvc"] = @(
+    "10.21.7.127:9004",
+    "10.21.5.192:9004",
+    "10.21.3.101:9004",
+    "10.21.12.136:9004",
+    "10.21.13.100:9004",
+    "10.21.13.10:9004",
+    "10.21.8.93:9004"
 )
 
 $serverConfig["dev"]["site"] = @(
@@ -853,7 +895,7 @@ foreach ($serverTypeListItem in $serverTypeList) {
         $serverName = $server.Split(".")[0]
         [array]$serverParts = $server.Split(":")
         if ($env.ToLower().StartsWith("aws")) {
-            $ipaddress = $server
+            $ipaddress = $serverParts[0]
             $serverName = $serverParts[0]
         }else{
             $ipaddress = ([System.Net.Dns]::GetHostAddresses($serverParts[0])).IPAddressToString
