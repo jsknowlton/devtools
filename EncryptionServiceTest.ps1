@@ -7,6 +7,7 @@ $nameSpace = 'GRS'
 $taxYear = '2018'
 
 $GoSystemWebSecurityUrl_AWS_LAB = 'https://lafi-websvc-lab-use1-aws.tax.nonprod.int.thomsonreuters.com:8100'
+$GoSystemWebSecurityUrl_AWS_PD = 'https://lafi-websvc-pd-use1-aws.tax.nonprod.int.thomsonreuters.com:8100'
 $GoSystemWebSecurityUrl_SANDBOX = 'http://sandbox-lafiwebsvc.int.thomson.com:8100'
 $GoSystemWebSecurityUrl_SB = 'http://sb-lafiwebsvc.int.thomsonreuters.com:8100'
 # $GoSystemWebSecurityUrl_SB1 = 'http://10.206.159.28:8100'
@@ -26,8 +27,8 @@ $GoSystemWebSecurityUrl_PL3 = 'http://10.185.7.27:8100'
 $GoSystemWebSecurityUrl_PL4 = 'http://10.185.7.28:8100'
 $GoSystemWebSecurityUrl_AWS = 'https://lafi-websvc-dr-use1-aws.tax.prod.int.thomsonreuters.com:8100'
 $GoSystemWebSecurityUrl_DC = 'http://dc-gosystemwebsecurity.int.thomson.com:8100'
-$GoSystemWebSecurityUrl_encrypt = $GoSystemWebSecurityUrl_AWS_LAB
-$GoSystemWebSecurityUrl_decrypt = $GoSystemWebSecurityUrl_AWS_LAB
+$GoSystemWebSecurityUrl_encrypt = $GoSystemWebSecurityUrl_AWS_PD
+$GoSystemWebSecurityUrl_decrypt = $GoSystemWebSecurityUrl_AWS_PD
 
 $clearToken = "APPSERVER=$appServer,NAMESPACE=$nameSpace,SESSIONID=$sessionId,YEAR=$taxYear"
 write-host "clearToken=$clearToken"
