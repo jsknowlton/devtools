@@ -330,6 +330,10 @@ function Get-DotNetVersion {
     return $result
 }
 
+function Get-IISExpress {
+    Get-Process -Name iisexpress | Format-Table id, mainwindowtitle -autosize
+}
+
 # function Get-SolutionPlatform {
 #     $slns = Get-ChildItem *.sln -Recurse
 #     # $results = @()
